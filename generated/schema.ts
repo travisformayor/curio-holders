@@ -15,6 +15,8 @@ export class Holder extends Entity {
   constructor(id: string) {
     super();
     this.set("id", Value.fromString(id));
+
+    this.set("firstBlock", Value.fromBigInt(BigInt.zero()));
   }
 
   save(): void {
@@ -41,5 +43,14 @@ export class Holder extends Entity {
 
   set id(value: string) {
     this.set("id", Value.fromString(value));
+  }
+
+  get firstBlock(): BigInt {
+    let value = this.get("firstBlock");
+    return value!.toBigInt();
+  }
+
+  set firstBlock(value: BigInt) {
+    this.set("firstBlock", Value.fromBigInt(value));
   }
 }
